@@ -3,8 +3,10 @@ from fastapi import FastAPI, HTTPException, Query, Body
 from pydantic import BaseModel, Field
 import chromadb
 from chromadb.utils import embedding_functions
+from chromadb.config import Settings
 from typing import List, Optional
 import json
+import os
 
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -21,9 +23,16 @@ app.add_middleware(
 
 # client = chromadb.PersistentClient(path="/content/chroma_db")
 # client = chromadb.HttpClient(host='chroma', port=8000)
-client = chromadb.HttpClient(host='chroma', port=8000)
+# client = chromadb.HttpClient(host='chroma', port=8000)
 # client = chromadb.HttpClient(host='chromadb-production.up.railway.app:443')
-
+client = chromadb.Client(Settings(
+    anonymized_telemetry=False,
+    chroma_api_impl="rest",
+    chroma_server_host=os.getenv("CHROMA_SERVER_HOST", "localhost"),
+    chroma_server_ssl_enabled=True,
+    chroma_server_http_port=443,
+    chroma_db_impl="duckdb+parquet",
+))
 
 
 # Embedding function setup
