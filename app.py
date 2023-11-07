@@ -21,8 +21,8 @@ app.add_middleware(
 
 # client = chromadb.PersistentClient(path="/content/chroma_db")
 # client = chromadb.HttpClient(host='chroma', port=8000)
-# client = chromadb.HttpClient(host='chroma', port=8000)
-client = chromadb.HttpClient(host='chromadb-production.up.railway.app:443')
+client = chromadb.HttpClient(host='chroma', port=8000)
+# client = chromadb.HttpClient(host='chromadb-production.up.railway.app:443')
 
 
 
