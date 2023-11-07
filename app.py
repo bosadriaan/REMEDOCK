@@ -26,7 +26,6 @@ app.add_middleware(
 # client = chromadb.HttpClient(host='chroma-production-6261.up.railway.app')
 client = chromadb.Client(Settings(
     anonymized_telemetry=False,
-    chroma_api_impl="rest",
     chroma_server_host="chroma-production-6261.up.railway.app",
     chroma_server_ssl_enabled=True,  # Ensures SSL is used
     chroma_server_http_port=443,     # Standard port for HTTPS
