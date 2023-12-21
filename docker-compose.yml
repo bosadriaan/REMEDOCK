@@ -1,4 +1,5 @@
 version: '3'
+
 services:
   fastapi_app:
     build: .
@@ -6,14 +7,29 @@ services:
       - "8080:80"
     depends_on:
       - chroma
+    volumes:
+      - my_model_volume:/app/models  # Mount the model volume at /app/models
+
+  # chroma:
+  #   image: chromadb/chroma
+  #   ports:
+  #     - "8000:8000"
+
   chroma:
     image: chromadb/chroma
     ports:
       - "8000:8000"
+    volumes:
+      - chroma_data:/chroma  # Mount the volume at /db_path
+
   react_app:
     build:
-      context: ..\REME2\contact-reconnect
+      context: ../REME2/contact-reconnect  # Adjusted the path to be UNIX style
     ports:
       - "3000:3000"
     depends_on:
       - fastapi_app
+
+volumes:
+  my_model_volume:  # Define the volume for model storage
+  chroma_data:  # Define the Docker volume

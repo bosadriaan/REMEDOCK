@@ -27,28 +27,9 @@ client = chromadb.HttpClient(host='chroma', port=8000)
 
 
 # Embedding function setup
-# sentence_transformer_ef = embedding_functions.SentenceTransformerEmbeddingFunction(
-#     model_name="distiluse-base-multilingual-cased-v1"
-# )
-from sentence_transformers import SentenceTransformer
-
-model_path = "/app/models/distiluse-base-multilingual-cased-v1"
-
-# Check if the model is already downloaded in the volume
-if os.path.exists(model_path):
-    # Load model from the volume
-    model = SentenceTransformer(model_path)
-else:
-    # Download and save the model to the volume
-    model = SentenceTransformer("distiluse-base-multilingual-cased-v1")
-    model.save(model_path)
-
-# Initialize the embedding function with the path
 sentence_transformer_ef = embedding_functions.SentenceTransformerEmbeddingFunction(
-    model_name=model_path
+    model_name="distiluse-base-multilingual-cased-v1"
 )
-
-
 
 # Delete the existing collection if it exists
 

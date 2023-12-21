@@ -10,3 +10,10 @@ services:
     image: chromadb/chroma
     ports:
       - "8000:8000"
+  react_app:
+    build:
+      context: ..\REME2\contact-reconnect
+    ports:
+      - "3000:3000"
+    depends_on:
+      - fastapi_app
