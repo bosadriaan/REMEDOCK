@@ -2,7 +2,8 @@ import requests
 import csv
 
 # URL of your FastAPI server
-url = "http://127.0.0.1:8080/documents"
+# url = "http://127.0.0.1:8080/documents"
+url = "http://remedock-production.up.railway.app:80/documents"
 
 # Function to add a document
 def add_document(sentence_data):
