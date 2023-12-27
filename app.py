@@ -216,7 +216,7 @@ async def query_by_sentence(query_data: QueryBySentenceData):
     return result
 
 
-# ================================
+# ===============================
 
 print(get_documents)
 
