@@ -24,7 +24,7 @@ app.add_middleware(
 # client = chromadb.PersistentClient(path="/content/chroma_db")
 # client = chromadb.HttpClient(host="chroma", port=8000) #local Dockerrrr
 # client = chromadb.HttpClient(host='chroma-production-6261.up.railway.app')
-client = chromadb.HttpClient(host="http://teal-size-production.up.railway.app")
+client = chromadb.HttpClient(host="chroma.railway.internal")
 
 # Embedding function setup
 # sentence_transformer_ef = embedding_functions.SentenceTransformerEmbeddingFunction(
@@ -220,7 +220,7 @@ async def query_by_sentence(query_data: QueryBySentenceData):
 
 print(get_documents)
 
-""" if __name__ == "__main__":
+if __name__ == "__main__":
      import uvicorn
      uvicorn.run(app, host="0.0.0.0", port=8080)
- """
+
