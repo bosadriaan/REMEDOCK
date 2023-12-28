@@ -1,17 +1,17 @@
 # Use an official Python runtime as a base image
 FROM tiangolo/uvicorn-gunicorn:python3.11
 
-# Create model directory
-RUN mkdir -p /app/models
+# Set the working directory in the container to /app
+WORKDIR /app
 
 # Install sentence_transformers
 RUN pip install sentence_transformers
 
+# Create model directory
+RUN mkdir -p /app/models
+
 # Pre-download Sentence Transformer model
 RUN python -c "from sentence_transformers import SentenceTransformer; SentenceTransformer('distiluse-base-multilingual-cased-v1').save('/app/models/distiluse-base-multilingual-cased-v1')"
-
-# Set the working directory in the container to /app
-WORKDIR /app
 
 # Copy the current directory contents into the container at /app
 COPY . /app/
