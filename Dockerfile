@@ -1,6 +1,12 @@
 # Use an official Python runtime as a base image
 FROM tiangolo/uvicorn-gunicorn:python3.11
 
+# Create model directory
+RUN mkdir -p /app/models
+
+# Install sentence_transformers
+RUN pip install sentence_transformers
+
 # Pre-download Sentence Transformer model
 RUN python -c "from sentence_transformers import SentenceTransformer; SentenceTransformer('distiluse-base-multilingual-cased-v1').save('/app/models/distiluse-base-multilingual-cased-v1')"
 
