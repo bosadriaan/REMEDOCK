@@ -23,7 +23,7 @@ app.add_middleware(
 
 # client = chromadb.PersistentClient(path="/content/chroma_db")
 # client = chromadb.HttpClient(host="chroma", port=8000) #local Dockerrrr
-client = chromadb.HttpClient(host="localhost", port=80)
+client = chromadb.HttpClient(host="different-insect-production.up.railway.app", port=80)
 
 # Embedding function setup
 # sentence_transformer_ef = embedding_functions.SentenceTransformerEmbeddingFunction(
