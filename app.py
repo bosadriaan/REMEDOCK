@@ -23,7 +23,6 @@ app.add_middleware(
 
 # client = chromadb.PersistentClient(path="/content/chroma_db")
 # client = chromadb.HttpClient(host="chroma", port=8000) #local Dockerrrr
-# client = chromadb.HttpClient(host='chroma-production-6261.up.railway.app')
 client = chromadb.HttpClient(host="chroma-production-2376.up.railway.app")
 
 # Embedding function setup
@@ -38,10 +37,12 @@ model_path = "/app/models/distiluse-base-multilingual-cased-v1"
 if os.path.exists(model_path):
     # Load model from the volume
     model = SentenceTransformer(model_path)
+    print("Loading existing model")
 else:
     # Download and save the model to the volume
     model = SentenceTransformer("distiluse-base-multilingual-cased-v1")
     model.save(model_path)
+    print("Downloaded and saved model")
 
 # Initialize the embedding function with the path
 sentence_transformer_ef = embedding_functions.SentenceTransformerEmbeddingFunction(
