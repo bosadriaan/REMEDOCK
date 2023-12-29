@@ -2,8 +2,8 @@ import requests
 import csv
 
 # URL of your FastAPI server This talks to fastapi, not the chroma db
-# url = "http://127.0.0.1:8080/documents"
-url = "https://remedock-production.up.railway.app/documents/"
+url = "http://127.0.0.1:8080/documents"
+# url = "https://remedock-production.up.railway.app/documents/"
 
 # Function to add a document
 def add_document(sentence_data):
